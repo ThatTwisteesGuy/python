@@ -8,7 +8,6 @@ def restart():
     print("\n" * 10)
     print("New Game!\n\n")
     global grid, grid_r
-
     current_player = "O"
     grid = [" ", " ", " "], [" ", " ", " "], [" ", " ", " "]
     grid_r = [" ", " ", " "], [" ", " ", " "], [" ", " ", " "]
@@ -52,13 +51,13 @@ def play(current_player):
 def victory_check(current_player):
     # Checks for both players if there are any 3 Os or Xs in a row, horizontally, vertically or diagonally
     for i in range(3):
-        if (grid[i] == ["O", "O", "O"]) or (grid_r[i] == ["O", "O", "O"]) or (
+        if (grid[i] or grid_r[i]) == ["O", "O", "O"] or (
                 grid[0][0] == "O" and grid[1][1] == "O" and grid[2][2] == "O") or (
                 grid_r[0][0] == "O" and grid[1][1] == "O" and grid[2][2] == "O"):
             print("Player O wins!")
             restart()
 
-        if (grid[i] == ["X", "X", "X"]) or (grid_r[i] == ["X", "X", "X"]) or (
+        if (grid[i] or grid_r[i]) == ["X", "X", "X"] or (
                 grid[0][0] == "X" and grid[1][1] == "X" and grid[2][2] == "X") or (
                 grid_r[0][0] == "X" and grid[1][1] == "X" and grid[2][2] == "X"):
             print("Player X wins!")
