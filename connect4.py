@@ -24,13 +24,23 @@ def show_display():
 
 
 def play(current_player, counts):
-    placement = int(input("Enter the column you want to drop in"))
-    if counts[placement] <= 5:
-        grid[placement][counts[placement]] = current_player
-        counts[placement] = counts[placement]+1
-    else:
-        print("That column is not available")
-    victory_check(current_player, counts, placement)
+    try:
+        placement = int(input("Enter the column you want to drop in"))
+        placement -= 1
+        if (placement >= 0 and placement <= 6):
+            if counts[placement] <= 5:
+                grid[placement][counts[placement]] = current_player
+                counts[placement] = counts[placement]+1
+            else:
+                print("That column is not available")
+
+            victory_check(current_player, counts, placement)
+        else:
+            print("out of range")
+            play(current_player, counts)
+    except:
+        print("unknown error", counts)
+        play(current_player, counts)
 
 
 def victory_check(current_player, counts, placement):
